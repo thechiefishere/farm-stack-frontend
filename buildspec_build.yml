@@ -12,6 +12,7 @@ phases:
       - echo Pre-build started on `date`
       - ls
       - cd frontend
+      - ls
       - npm install
   build:
     commands:
