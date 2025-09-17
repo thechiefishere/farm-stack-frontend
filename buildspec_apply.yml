@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing dependencies...
+      # - npm install -g npm@latest
+  pre_build:
+    commands:
+      - echo Pre-build started on `date`
+      - ls
+      - cd frontend
+      - ls
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      # Setup SSH key for remote access
+      - mkdir -p ~/.ssh
+      - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - ssh -o StrictHostKeyChecking=no ubuntu@44.211.92.176 "mkdir -p ~/app"
+      - echo Copying files to server...
+      - scp -o StrictHostKeyChecking=no -r build/* ubuntu@44.211.92.176:~/app/
