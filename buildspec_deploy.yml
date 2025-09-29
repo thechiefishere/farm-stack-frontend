@@ -27,5 +27,11 @@ phases:
       - cat ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.204.111.97 "mkdir -p ~/app"
+      - sudo apt update
+      - sudo apt install -y nginx
+      - sudo systemctl enable nginx
+      - sudo systemctl start nginx
+      - sudo mkdir -p /var/www/html
+      - sudo chown ubuntu:ubuntu /var/www/html"
       - echo Copying files to server...
-      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@44.204.111.97:~/app/
+      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@44.204.111.97:/var/www/html/
