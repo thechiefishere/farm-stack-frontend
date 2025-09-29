@@ -25,6 +25,6 @@ phases:
       - mkdir -p ~/.ssh
       - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
-      - ssh -o StrictHostKeyChecking=no ubuntu@44.211.92.176 "mkdir -p ~/app"
+      - ssh -o StrictHostKeyChecking=no ubuntu@35.173.1.226 "mkdir -p ~/app"
       - echo Copying files to server...
       - scp -o StrictHostKeyChecking=no -r build/* ubuntu@44.211.92.176:~/app/
