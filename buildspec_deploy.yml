@@ -26,12 +26,12 @@ phases:
       - aws s3 cp s3://john-terraform-state-bucket-002/jbaba-key.pem ~/.ssh/id_rsa
       - cat ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.200.70.81 "mkdir -p ~/app"
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.200.70.81 "sudo chown ubuntu:ubuntu /var/www/html"
       # - sudo apt update
       # - sudo apt install -y nginx
       # - sudo systemctl enable nginx
       # - sudo systemctl start nginx
       # - sudo mkdir -p /var/www/html
-      - sudo chown ubuntu:ubuntu /var/www/html
+      # - sudo chown ubuntu:ubuntu /var/www/html
       - echo Copying files to server...
       - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@44.200.70.81:/var/www/html/
