@@ -32,6 +32,6 @@ phases:
       # - sudo systemctl enable nginx
       # - sudo systemctl start nginx
       # - sudo mkdir -p /var/www/html
-      # - sudo chown ubuntu:ubuntu /var/www/html"
+      - sudo chown ubuntu:ubuntu /var/www/html"
       - echo Copying files to server...
       - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@44.200.70.81:/var/www/html/
