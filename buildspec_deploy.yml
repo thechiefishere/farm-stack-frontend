@@ -23,8 +23,9 @@ phases:
       - echo Build completed on `date`
       # Setup SSH key for remote access
       - mkdir -p ~/.ssh
-      - echo -e $SERVER_KEY > ~/.ssh/id_rsa
-      - echo $SERVER_KEY
+      - echo "-----BEGIN RSA PRIVATE KEY-----" > ~/.ssh/id_rsa
+      - echo "$SERVER_KEY" | sed 's/-----BEGIN RSA PRIVATE KEY-----//' | sed 's/-----END RSA PRIVATE KEY-----//' | fold -w 64 >> ~/.ssh/id_rsa
+      - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
       - cat ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@35.173.1.226 "mkdir -p ~/app"
