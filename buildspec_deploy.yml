@@ -26,6 +26,7 @@ phases:
       - echo "-----BEGIN RSA PRIVATE KEY-----" > ~/.ssh/id_rsa
       - echo "$SERVER_KEY" | sed 's/-----BEGIN RSA PRIVATE KEY-----//' | sed 's/-----END RSA PRIVATE KEY-----//' | fold -w 64 >> ~/.ssh/id_rsa
       - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
+      - od -c ~/.ssh/id_rsa | head -n 5
       - cat ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@35.173.1.226 "mkdir -p ~/app"
