@@ -23,7 +23,7 @@ phases:
       - echo Build completed on `date`
       # Setup SSH key for remote access
       - mkdir -p ~/.ssh
-      - echo $SERVER_KEY > ~/.ssh/id_rsa
+      - echo -e $SERVER_KEY > ~/.ssh/id_rsa
       - echo $SERVER_KEY
       - cat ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
