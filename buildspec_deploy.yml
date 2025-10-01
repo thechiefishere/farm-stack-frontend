@@ -6,13 +6,10 @@ phases:
       nodejs: 18
     commands:
       - echo Installing dependencies...
-      # - npm install -g npm@latest
   pre_build:
     commands:
       - echo Pre-build started on `date`
-      - ls
       - cd frontend
-      - ls
       - npm install
   build:
     commands:
@@ -21,17 +18,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      # Setup SSH key for remote access
       - mkdir -p ~/.ssh
       - aws s3 cp s3://john-terraform-state-bucket-002/jbaba-key.pem ~/.ssh/id_rsa
-      - cat ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.200.70.81 "sudo chown ubuntu:ubuntu /var/www/html"
-      # - sudo apt update
-      # - sudo apt install -y nginx
-      # - sudo systemctl enable nginx
-      # - sudo systemctl start nginx
-      # - sudo mkdir -p /var/www/html
-      # - sudo chown ubuntu:ubuntu /var/www/html
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.201.37.122 "sudo chown ubuntu:ubuntu /var/www/html"
       - echo Copying files to server...
-      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@44.200.70.81:/var/www/html/
+      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@44.201.37.122:/var/www/html/

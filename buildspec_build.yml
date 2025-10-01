@@ -6,13 +6,10 @@ phases:
       nodejs: 18
     commands:
       - echo Installing dependencies...
-      # - npm install -g npm@latest
   pre_build:
     commands:
       - echo Pre-build started on `date`
-      - ls
       - cd frontend
-      - ls
       - npm install
   build:
     commands:
@@ -21,10 +18,3 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      # Setup SSH key for remote access
-      # - mkdir -p ~/.ssh
-      # - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-      # - chmod 600 ~/.ssh/id_rsa
-      # - ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST "mkdir -p ~/frontend_builds"
-      # - echo Copying files to server...
-      # - scp -o StrictHostKeyChecking=no -r build/* $SERVER_USER@$SERVER_HOST:~/frontend_builds/
