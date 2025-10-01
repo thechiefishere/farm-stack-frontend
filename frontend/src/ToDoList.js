@@ -6,10 +6,11 @@ import { BiSolidTrash } from "react-icons/bi";
 function ToDoList({ listId, handleBackButton }) {
   let labelRef = useRef();
   const [listData, setListData] = useState(null);
+  const url = "http://3.228.23.29:3001"
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`/api/lists/${listId}`);
+      const response = await axios.get(`${url}/api/lists/${listId}`);
       const newData = await response.data;
       setListData(newData);
     };
@@ -18,7 +19,7 @@ function ToDoList({ listId, handleBackButton }) {
 
   function handleCreateItem(label) {
     const updateData = async () => {
-      const response = await axios.post(`/api/lists/${listData.id}/items/`, {
+      const response = await axios.post(`${url}/api/lists/${listData.id}/items/`, {
         label: label,
       });
       setListData(await response.data);
@@ -29,7 +30,7 @@ function ToDoList({ listId, handleBackButton }) {
   function handleDeleteItem(id) {
     const updateData = async () => {
       const response = await axios.delete(
-        `/api/lists/${listData.id}/items/${id}`
+        `${url}/api/lists/${listData.id}/items/${id}`
       );
       setListData(await response.data);
     };
@@ -39,7 +40,7 @@ function ToDoList({ listId, handleBackButton }) {
   function handleCheckToggle(itemId, newState) {
     const updateData = async () => {
       const response = await axios.patch(
-        `/api/lists/${listData.id}/checked_state`,
+        `${url}/api/lists/${listData.id}/checked_state`,
         {
           item_id: itemId,
           checked_state: newState,

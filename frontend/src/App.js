@@ -12,8 +12,9 @@ function App() {
     reloadData().catch(console.error);
   }, []);
 
+  const url = "http://3.228.23.29:3001"
   async function reloadData() {
-    const response = await axios.get("/api/lists");
+    const response = await axios.get(`${url}/api/lists`);
     const data = await response.data;
     setListSummaries(data);
   }
@@ -24,7 +25,7 @@ function App() {
         name: newName,
       };
 
-      await axios.post(`/api/lists`, newListData);
+      await axios.post(`${url}/api/lists`, newListData);
       reloadData().catch(console.error);
     };
     updateData();
@@ -32,7 +33,7 @@ function App() {
 
   function handleDeleteToDoList(id) {
     const updateData = async () => {
-      await axios.delete(`/api/lists/${id}`);
+      await axios.delete(`${url}/api/lists/${id}`);
       reloadData().catch(console.error);
     };
     updateData();
