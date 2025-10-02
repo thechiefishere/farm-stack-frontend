@@ -6,7 +6,7 @@ import { BiSolidTrash } from "react-icons/bi";
 function ToDoList({ listId, handleBackButton }) {
   let labelRef = useRef();
   const [listData, setListData] = useState(null);
-  const url = "http://3.228.23.29:3001"
+  const url = "http://44.201.59.219:3001"
 
   useEffect(() => {
     const fetchData = async () => {

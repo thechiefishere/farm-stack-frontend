@@ -21,6 +21,6 @@ phases:
       - mkdir -p ~/.ssh
       - aws s3 cp s3://john-terraform-state-bucket-002/jbaba-key.pem ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.201.37.122 "sudo chown ubuntu:ubuntu /var/www/html"
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@34.205.15.129 "sudo chown ubuntu:ubuntu /var/www/html"
       - echo Copying files to server...
-      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@44.201.37.122:/var/www/html/
+      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r build/* ubuntu@34.205.15.129:/var/www/html/

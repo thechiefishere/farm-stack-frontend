@@ -12,7 +12,7 @@ function App() {
     reloadData().catch(console.error);
   }, []);
 
-  const url = "http://3.228.23.29:3001"
+  const url = "http://44.201.59.219:3001"
   async function reloadData() {
     const response = await axios.get(`${url}/api/lists`);
     const data = await response.data;
